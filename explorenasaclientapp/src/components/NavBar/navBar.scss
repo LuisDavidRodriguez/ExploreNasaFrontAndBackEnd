@@ -1,0 +1,27 @@
+@use '../../styles/variables' as v;
+@use '../../styles/functions' as f;
+
+.navBar {
+  width: 100%;
+  height: v.$navHeightMobile3;
+  background-color: f.get-color('background');
+  z-index: f.get-z-index('navigation');
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+
+  // the original with of the logo is 107px
+  // we reduce it to achieve a little more clearity in the retina displays
+  &__logo {
+    display: inline-block;
+    max-height: v.$navHeightMobile3 - 10;
+  }
+
+  &__linksContainer {
+    display: flex;
+  }
+}
