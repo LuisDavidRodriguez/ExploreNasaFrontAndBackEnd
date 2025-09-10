@@ -8,6 +8,6 @@ namespace ExploreNasaBackendService.Models
         {
         }
 
-        public DbSet<TodayApod> TodayApod { get; set; } = null!;
+        public DbSet<ApodWithId> TodayApod { get; set; } = null!;
     }
 }

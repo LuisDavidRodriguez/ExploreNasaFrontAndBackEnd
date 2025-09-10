@@ -1,5 +1,5 @@
-import { createAction, createAsyncThunk, nanoid } from '@reduxjs/toolkit';
-import { KEY } from './env';
+import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
+import { LOCAL_APODS_BASE } from '../env';
 import * as dateHelper from '../helpers/dates';
 
 const randomApodFetched = createAction('random_apod_fetched');
@@ -12,7 +12,6 @@ async function fetchHelper(url) {
   return data;
 }
 
-const APOD_BASE = `https://api.nasa.gov/planetary/apod?api_key=${KEY}`;
 const getApodUrlQueryes = (qeryes) => {
   /* eslint-disable max-len */
   // https://github.com/nasa/apod-api#docs
@@ -34,35 +33,34 @@ const getApodUrlQueryes = (qeryes) => {
     count = null,
     thumps = null,
   } = qeryes;
-
-  let result = APOD_BASE;
+  const urlObject = new URLSearchParams();
 
   if (date) {
-    result += `&date=${date}`;
+    urlObject.append('date', date);
   }
 
   if (startDate) {
-    result += `&start_date=${startDate}`;
+    urlObject.append('start_date', startDate);
   }
 
   if (endDate) {
-    result += `&end_date=${endDate}`;
+    urlObject.append('end_dat', endDate);
   }
 
   if (count) {
-    result += `&count=${count}`;
+    urlObject.append('count', count);
   }
 
   if (thumps) {
-    result += `&thumps=${thumps}`;
+    urlObject.append('thumps', thumps);
   }
 
-  return result;
+  return `${LOCAL_APODS_BASE}?${urlObject.toString()}`;
 };
 
 const fetchTodayApod = async () => {
   try {
-    const data = await fetchHelper(APOD_BASE);
+    const data = await fetchHelper(`${LOCAL_APODS_BASE}/today-apod`);
     return data;
   } catch (error) {
     return 'error';
@@ -75,28 +73,7 @@ const fetchRandomApodByQuantity = createAsyncThunk(randomApodFetched, async (qua
   const url = getApodUrlQueryes({ count: quantity });
   try {
     const data = await fetchHelper(url);
-    // the data is an array
-    const less = data.map((apod) => {
-      const {
-        title,
-        url,
-        date,
-        explanation,
-        media_type: mediaType,
-      } = apod;
-
-      // in media tipe we could have video image
-      return {
-        id: nanoid(),
-        title,
-        url,
-        date,
-        explanation,
-        mediaType,
-      };
-    });
-
-    return less;
+    return data;
   } catch (error) {
     return [];
   }
@@ -118,28 +95,7 @@ const fetchDateApod = createAsyncThunk(dateApodFetched, async (startDate = dateH
   try {
     const data = await fetchHelper(url);
     // the data is an array
-    const less = data.map((apod) => {
-      const {
-        title,
-        url,
-        date,
-        explanation,
-        media_type: mediaType,
-      } = apod;
-
-      // in media tipe we could have video image
-      return {
-        id: nanoid(),
-        title,
-        url,
-        date,
-        explanation,
-        mediaType,
-      };
-    });
-
-    // console.log(less);
-    return less;
+    return data;
   } catch (error) {
     return 'error';
   }

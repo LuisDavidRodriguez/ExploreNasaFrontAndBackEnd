@@ -1,0 +1,34 @@
+@use '../../../styles/variables' as v;
+@use '../../../styles/functions' as f;
+@use '../../../styles/mixin';
+
+.container {
+  width: 100%;
+  background-color: darken($color: f.get-color('relax'), $amount: 50);
+  background-image: url('./apodSearch.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: v.$navHeightMobile3;
+}
+
+.title {
+  color: f.get-color('primary');
+  font-size: 3em;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.swiperContainer {
+  height: 600px;
+  width: 100%;
+  padding-left: 1%;
+  padding-right: 1%;
+  margin-bottom: 20px;
+
+  @include mixin.large {
+    height: 670px;
+  }
+}
