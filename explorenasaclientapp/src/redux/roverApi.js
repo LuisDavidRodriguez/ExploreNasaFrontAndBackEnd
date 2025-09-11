@@ -1,5 +1,5 @@
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
-import { KEY } from '../env';
+import { LOCAL_ROVER_PHOTOS, LOCAL_ROVER_MANIFEST } from '../env';
 
 const roverManifestFetched = createAction('rover_manifest_fetched');
 const roverRandomFetched = createAction('rover_random_fetched');
@@ -40,7 +40,6 @@ An example entry from a sol at /manifests/Curiosity might look like:
 This would tell you that this rover, on sol 0, took 3702 photos,
 and those are from among the CHEMCAM, FHAZ, MARDI, and RHAZ cameras.
 */
-const getUrlManifest = (rover = 'Curiosity') => `https://api.nasa.gov/mars-photos/api/v1/manifests/${rover}?api_key=${KEY}`;
 
 const getRoverUrlQueryes = (qeryes) => {
   /*
@@ -66,30 +65,32 @@ const getRoverUrlQueryes = (qeryes) => {
     rover = 'Curiosity',
   } = qeryes;
 
-  let result = `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?api_key=${KEY}`;
+  const queries = new URLSearchParams();
+  queries.append('rover', rover);
 
   // either sol or earth date could exist in the query
   if (sol) {
-    result += `&sol=${sol}`;
+    queries.append('sol', sol);
   } else if (earthDate) {
-    result += `&earth_date=${earthDate}`;
+    queries.append('earth_date', earthDate);
   }
 
   if (camera) {
-    result += `&camera=${camera}`;
+    queries.append('camera', camera);
   }
 
   if (page) {
-    result += `&page=${page}`;
+    queries.append('page', page);
   }
 
-  return result;
+  return `${LOCAL_ROVER_PHOTOS}?${queries}`;
 };
 
 const roverFetchManifest = createAsyncThunk(roverManifestFetched, async (rover = 'Curiosity') => {
-  const url = getUrlManifest(rover);
+  const params = new URLSearchParams();
+  params.append('rover', rover);
   try {
-    const data = await fetchHelper(url);
+    const data = await fetchHelper(`${LOCAL_ROVER_MANIFEST}?${params.toString()}`);
     // the data is an array
     return data.photo_manifest;
   } catch (error) {
