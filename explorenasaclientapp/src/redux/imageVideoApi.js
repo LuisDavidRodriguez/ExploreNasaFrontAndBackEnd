@@ -1,6 +1,6 @@
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
+import { LOCAL_MEDIA } from '../env';
 
-const IMG_VIDEO_BASE = 'https://images-api.nasa.gov';
 const mediaFetched = createAction('media_fetched');
 const mediaIdFetched = createAction('media_id_fetched');
 
@@ -61,8 +61,7 @@ const getImgVideoUrlQueryes = (qeryes) => {
 
   let flagFirst = true;
   let prefix = '';
-  let result = IMG_VIDEO_BASE;
-  result += '/search';
+  let result = LOCAL_MEDIA;
 
   if (q) {
     if (flagFirst) {
@@ -234,7 +233,7 @@ const getAssetsByIdQueryes = (qeryes) => {
     id = null,
   } = qeryes;
 
-  let result = IMG_VIDEO_BASE;
+  let result = LOCAL_MEDIA;
   result += `/asset/${id}`;
 
   return result;
