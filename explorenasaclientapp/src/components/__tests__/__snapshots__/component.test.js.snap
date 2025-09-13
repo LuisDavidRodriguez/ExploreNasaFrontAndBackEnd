@@ -9,17 +9,20 @@ Object {
         class="form"
       >
         <input
+          aria-label="Search Text"
           name="textInput"
           placeholder="search by text in this period"
           type="text"
           value=""
         />
         <input
+          aria-label="Select date"
           name="dateInput"
           type="date"
           value=""
         />
         <select
+          aria-label="Select media type"
           class="selector"
           name="selectInput"
         >
@@ -40,6 +43,7 @@ Object {
           </option>
         </select>
         <button
+          aria-label="default text1"
           class="btn btn-outline-light"
           type="button"
         >
@@ -53,17 +57,20 @@ Object {
       class="form"
     >
       <input
+        aria-label="Search Text"
         name="textInput"
         placeholder="search by text in this period"
         type="text"
         value=""
       />
       <input
+        aria-label="Select date"
         name="dateInput"
         type="date"
         value=""
       />
       <select
+        aria-label="Select media type"
         class="selector"
         name="selectInput"
       >
@@ -84,6 +91,7 @@ Object {
         </option>
       </select>
       <button
+        aria-label="default text1"
         class="btn btn-outline-light"
         type="button"
       >
@@ -178,15 +186,15 @@ Object {
           <p
             class="p1"
           >
-            This application allows you to HIT 2 API's fournished by the NASA
+            This application allows you to connect with NASA API's
           </p>
           <p
-            class="p1"
+            class="p2"
           >
-            Enjoyed the views and the functionality
+            Enjoy the views and functionality
           </p>
           <p
-            class="p1"
+            class="p3"
           >
             Coded By
              
@@ -199,7 +207,7 @@ Object {
               Luis David Rodriguez Valades
             </a>
              
-            powered by the NASA
+            powered by NASA
           </p>
         </div>
       </div>
@@ -234,15 +242,15 @@ Object {
         <p
           class="p1"
         >
-          This application allows you to HIT 2 API's fournished by the NASA
+          This application allows you to connect with NASA API's
         </p>
         <p
-          class="p1"
+          class="p2"
         >
-          Enjoyed the views and the functionality
+          Enjoy the views and functionality
         </p>
         <p
-          class="p1"
+          class="p3"
         >
           Coded By
            
@@ -255,7 +263,7 @@ Object {
             Luis David Rodriguez Valades
           </a>
            
-          powered by the NASA
+          powered by NASA
         </p>
       </div>
     </div>

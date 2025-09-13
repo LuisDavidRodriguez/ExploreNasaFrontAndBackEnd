@@ -5,7 +5,6 @@ import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { configureStore } from '@reduxjs/toolkit';
 import ApodSearchSection from './ApodSearchSection';
-import { allApodsActions } from '../../../redux/apod';
 
 // Mock the API and helper functions
 jest.mock('../../../redux/apodApi', () => ({
