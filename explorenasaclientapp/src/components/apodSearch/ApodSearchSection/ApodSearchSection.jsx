@@ -22,7 +22,7 @@ const ApodSearchSection = () => {
     if (allApodsStatus === 'empty') {
       dispatch(fetchDateApod());
     }
-  });
+  }, [allApodsStatus, dispatch]);
 
   const handleFormData = ({ text, date, mediaType }) => {
     if (text !== '') {
@@ -93,8 +93,7 @@ function filterState(state) {
     return state.allApods.data.filter((item) => {
       const { explanation, title } = item;
       // trim the search in the explanation at the same visible explanation in the card
-      const subExpla = explanation.substring(0, 200);
-      const lowerExpla = subExpla.toLowerCase();
+      const lowerExpla = explanation.substring(0, 200).toLowerCase();
       const lowerTitle = title.toLowerCase();
       const lowerText = text.toLowerCase();
       return lowerExpla.indexOf(lowerText) > -1 || lowerTitle.indexOf(lowerText) > -1;
