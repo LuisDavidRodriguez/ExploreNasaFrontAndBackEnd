@@ -8,7 +8,7 @@ const FormFilter = (props) => {
   const [dateInput, setDateInput] = useState('');
   const [selectInput, setSelectInput] = useState('All');
 
-  const onChanegeManager = (e) => {
+  const onChangeManager = (e) => {
     const { name } = e.target;
     const { value } = e.target;
     if (name === 'dateInput') {
@@ -36,14 +36,14 @@ const FormFilter = (props) => {
 
   return (
     <form className={styles.form}>
-      <input name="textInput" type="text" placeholder="search by text in this period" onChange={onChanegeManager} value={textInput} />
-      <input name="dateInput" type="date" onChange={onChanegeManager} value={dateInput} />
-      <select className={styles.selector} value={selectInput} name="selectInput" onChange={onChanegeManager}>
+      <input aria-label="Search Text" name="textInput" type="text" placeholder="search by text in this period" onChange={onChangeManager} value={textInput} />
+      <input aria-label="Select date" name="dateInput" type="date" onChange={onChangeManager} value={dateInput} />
+      <select aria-label="Select media type" className={styles.selector} value={selectInput} name="selectInput" onChange={onChangeManager}>
         <option value="All">All</option>
         <option value="image">Image</option>
         <option value="video">Video</option>
       </select>
-      <button className="btn btn-outline-light" type="button" onClick={buttonClick}>{buttonText1}</button>
+      <button className="btn btn-outline-light" type="button" onClick={buttonClick} aria-label={buttonText1 || 'Search'}>{buttonText1}</button>
     </form>
   );
 };
