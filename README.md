@@ -1,4 +1,4 @@
-# Beautiful NASA 😄
+# Explore NASA 🚀
 
 ## Description
 This application allows you to HIT 3 API's fournished by the NASA,
@@ -18,24 +18,36 @@ The NASA images and media API is organized around REST, You can see and retreive
 - SASS modules
 - React-Bootstrap
 - Swiper Library
+- C#
+- .Net
 
 <br />
 
 ## Getting Started
-
-## Setup
-If you installed git you can clone the code to your machine, or download a ZIP of all the files directly.
+Running this project requires 3 steps:
 - Clone the repo
-- cd into the project directory
-- npm install
+- Run BackendService
+- Run ClientApp
+#### Run Backend Service
+Using VisualStudio
+  - Open the solution
+  - Right click into `BackendService` project -> Select `Set as Startup project`
+       <img width="736" height="1107" alt="image" src="https://github.com/user-attachments/assets/78a057bd-66b1-4bd7-a32f-4fbe60fb4983" />
+  
+  - Click into `run` either debugging as `https` or just run
+      <img width="2097" height="397" alt="image" src="https://github.com/user-attachments/assets/2e1dc2e7-febb-40b7-aef5-7257b9652288" />
+  
+  - A new terminal should be open with the port 7018
+      <img width="1079" height="335" alt="image" src="https://github.com/user-attachments/assets/cb468479-a419-44e3-998d-89326e6eeeb0" />
+
+Using powershell
+- cd \ExploreNasa\BackendService
+- run `dotnet build`
+- run `dotnet run`
+#### Run FrontEnd ClientApp
+- cd /ExploreNasa/Clientapp
+- npm install (install dependencies)
 - npm start (to start/run the project)
-
-command to clone the files to your machine:
-
-
-- Once the files are on your machine, open the _Portfolio_ folder in [Visual Studio Code](https://code.visualstudio.com/)
-
-- With the files open in Visual Studio Code, press the **Go Live** button at the bottom of the window to launch the files with [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer).
 
 ## Authors
 
